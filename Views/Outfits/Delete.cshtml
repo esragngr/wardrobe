@@ -1,0 +1,14 @@
+﻿@model Wardrobe.Models.Outfit
+
+<h2>Bu kombini silmek istediğine emin misin?</h2>
+<div class="border p-3">
+    <img src="@Model.ImagePath" width="200" />
+    <p>@Model.Description</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger mt-2">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary mt-2">Vazgeç</a>
+</form>
+

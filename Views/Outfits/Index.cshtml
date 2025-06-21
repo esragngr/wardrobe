@@ -1,0 +1,66 @@
+﻿@model List<Wardrobe.Models.Outfit>
+@{
+    ViewData["Title"] = "Kombinler";
+}
+<a asp-action="Suggest" class="btn btn-info mb-3">✨ Otomatik Kombin Öner</a>
+
+<h2>Kombinler</h2>
+
+<form method="get" class="mb-4 row">
+    <div class="col-md-3">
+        <input type="text" name="search" placeholder="Açıklama ara..." class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <select name="type" class="form-control">
+            <option value="">Tür</option>
+            <option value="Tişört">Tişört</option>
+            <option value="Pantolon">Pantolon</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <select name="color" class="form-control">
+            <option value="">Renk</option>
+            <option value="Kırmızı">Kırmızı</option>
+            <option value="Siyah">Siyah</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <select name="style" class="form-control">
+            <option value="">Stil</option>
+            <option value="Spor">Spor</option>
+            <option value="Klasik">Klasik</option>
+        </select>
+    </div>
+    <div class="col-md-12 mt-2">
+        <button type="submit" class="btn btn-primary">Filtrele</button>
+    </div>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Görsel</th>
+            <th>Açıklama</th>
+            <th>Tür</th>
+            <th>Renk</th>
+            <th>Stil</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var outfit in Model)
+        {
+            <tr>
+                <td><img src="@outfit.ImagePath" width="100" /></td>
+                <td>@outfit.Description</td>
+                <td>@outfit.Type</td>
+                <td>@outfit.Color</td>
+                <td>@outfit.Style</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@outfit.Id" class="btn btn-warning btn-sm">Düzenle</a>
+                    <a asp-action="Delete" asp-route-id="@outfit.Id" class="btn btn-danger btn-sm">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
