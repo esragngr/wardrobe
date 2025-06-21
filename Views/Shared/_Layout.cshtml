@@ -1,15 +1,24 @@
 ﻿<!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
+=======
+<html lang="tr">
+>>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Wardrobe</title>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Wardrobe.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
+<<<<<<< HEAD
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Wardrobe</a>
@@ -25,17 +34,81 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+=======
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom shadow-sm mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold text-primary" asp-controller="Home" asp-action="Index">👗 Wardrobe</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Hakkında</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Outfits" asp-action="Index">Tüm Kombinler</a>
+                        </li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Outfits" asp-action="MyOutfits">Benim Kombinlerim</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Outfits" asp-action="Suggest">Kombin Önerileri</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Outfits" asp-action="Shuffle">🎲 Rastgele Kombin</a>
+                            </li>
+                        }
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link text-dark">👤 @User.Identity.Name</span>
+                            </li>
+                            <li class="nav-item">
+                                <form method="post" asp-controller="Account" asp-action="Logout" class="d-inline">
+                                    <button type="submit" class="btn btn-link nav-link text-dark">Çıkış Yap</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Giriş Yap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Kayıt Ol</a>
+                            </li>
+                        }
+>>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+<<<<<<< HEAD
     <div class="container">
         <main role="main" class="pb-3">
+=======
+
+    <div class="container">
+        <main role="main" class="pb-4">
+>>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
             @RenderBody()
         </main>
     </div>
 
+<<<<<<< HEAD
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - Wardrobe - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -44,6 +117,24 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+=======
+    <footer class="border-top footer text-muted mt-4">
+        <div class="container">
+            &copy; @DateTime.Now.Year - Wardrobe | <a asp-controller="Home" asp-action="Privacy">Gizlilik</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Doğrudan CDN üzerinden jQuery Validation (isteğe bağlı) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJm5u/1oT0v+eJuRgxDyFY8aSP0NU6hTxEmFg=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.13/dist/jquery.validate.unobtrusive.min.js"></script>
+
+>>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

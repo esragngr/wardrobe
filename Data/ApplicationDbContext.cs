@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Wardrobe.Models;
 using Microsoft.EntityFrameworkCore.Metadata;
+=======
+﻿// Data/ApplicationDbContext.cs
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Wardrobe.Models;
+>>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
 namespace Wardrobe.Data
 {
@@ -13,6 +20,7 @@ namespace Wardrobe.Data
         }
 
         public DbSet<Outfit> Outfits { get; set; }
+<<<<<<< HEAD
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -37,5 +45,7 @@ namespace Wardrobe.Data
                 }
             }
         }
+=======
+>>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
     }
 }

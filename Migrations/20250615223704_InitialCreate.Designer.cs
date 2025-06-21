@@ -2,13 +2,9 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-<<<<<<< HEAD
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-=======
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 using Wardrobe.Data;
 
 #nullable disable
@@ -16,41 +12,22 @@ using Wardrobe.Data;
 namespace Wardrobe.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250615223704_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.0")
-<<<<<<< HEAD
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
-
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-=======
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-<<<<<<< HEAD
-                        .HasColumnType("text");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("text");
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("text");
-=======
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -64,18 +41,13 @@ namespace Wardrobe.Migrations
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-<<<<<<< HEAD
-                        .HasDatabaseName("RoleNameIndex");
-=======
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
                     b.ToTable("AspNetRoles", (string)null);
                 });
@@ -84,21 +56,6 @@ namespace Wardrobe.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-<<<<<<< HEAD
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
-
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("text");
-=======
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -112,7 +69,6 @@ namespace Wardrobe.Migrations
                     b.Property<string>("RoleId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
                     b.HasKey("Id");
 
@@ -125,21 +81,6 @@ namespace Wardrobe.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-<<<<<<< HEAD
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-=======
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -153,7 +94,6 @@ namespace Wardrobe.Migrations
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
                     b.HasKey("Id");
 
@@ -165,21 +105,6 @@ namespace Wardrobe.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-<<<<<<< HEAD
-                        .HasMaxLength(128)
-                        .HasColumnType("text");
-
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("text");
-
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-=======
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
@@ -191,7 +116,6 @@ namespace Wardrobe.Migrations
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -203,17 +127,10 @@ namespace Wardrobe.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-<<<<<<< HEAD
-                        .HasColumnType("text");
-
-                    b.Property<string>("RoleId")
-                        .HasColumnType("text");
-=======
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
                     b.HasKey("UserId", "RoleId");
 
@@ -225,20 +142,6 @@ namespace Wardrobe.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-<<<<<<< HEAD
-                        .HasColumnType("text");
-
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("text");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("text");
-=======
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
@@ -249,7 +152,6 @@ namespace Wardrobe.Migrations
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -259,56 +161,6 @@ namespace Wardrobe.Migrations
             modelBuilder.Entity("Wardrobe.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
-<<<<<<< HEAD
-                        .HasColumnType("text");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("text");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("text");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("text");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("text");
-=======
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
@@ -357,7 +209,6 @@ namespace Wardrobe.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
                     b.HasKey("Id");
 
@@ -366,12 +217,8 @@ namespace Wardrobe.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-<<<<<<< HEAD
-                        .HasDatabaseName("UserNameIndex");
-=======
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -380,26 +227,6 @@ namespace Wardrobe.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-<<<<<<< HEAD
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Color")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Style")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("text");
-=======
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -421,7 +248,6 @@ namespace Wardrobe.Migrations
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
->>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 
                     b.HasKey("Id");
 

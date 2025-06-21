@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Visual Studio
 .vs/
 *.user
@@ -11,3 +12,13 @@ obj/
 *.db
 *.DS_Store
 *.log
+=======
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.db
+*.mdf
+
+>>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248

@@ -1,4 +1,5 @@
 ﻿@model List<Wardrobe.Models.Outfit>
+<<<<<<< HEAD
 @{
     ViewData["Title"] = "Kombinler";
 }
@@ -64,3 +65,49 @@
         }
     </tbody>
 </table>
+=======
+
+@{
+    ViewData["Title"] = "Dijital Gardırobum";
+}
+
+<div class="container py-5" style="font-family: 'Inter', sans-serif;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-dark">Dijital Gardırobum</h2>
+        <a class="btn btn-primary fw-semibold d-flex align-items-center gap-2" asp-controller="Outfits" asp-action="Create">
+            <svg width="16" height="16" fill="white"><path d="M12 5v14M5 12h14" /></svg>
+            Yeni Ekle
+        </a>
+    </div>
+
+    <div class="mb-4 d-flex flex-wrap gap-2">
+        <a class="btn btn-outline-secondary rounded-pill" href="?">Tümü</a>
+        <a class="btn btn-outline-secondary rounded-pill" href="?type=Tişört">Üst Giyim</a>
+        <a class="btn btn-outline-secondary rounded-pill" href="?type=Pantolon">Alt Giyim</a>
+        <a class="btn btn-outline-secondary rounded-pill" href="?type=Ayakkabı">Ayakkabı</a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        @foreach (var outfit in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 160px; overflow: hidden;">
+                        <img src="@outfit.ImagePath" alt="Kıyafet" style="max-height: 100%; max-width: 100%;" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-semibold">@outfit.Description</h5>
+                        <p class="text-muted small mb-2">Tür: @outfit.Type | Renk: @outfit.Color | Stil: @outfit.Style</p>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a asp-controller="Outfits" asp-action="Edit" asp-route-id="@outfit.Id" class="btn btn-sm btn-outline-warning">Düzenle</a>
+                            <form asp-controller="Outfits" asp-action="Delete" asp-route-id="@outfit.Id" method="post" onsubmit="return confirm('Silmek istediğinize emin misiniz?');">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Sil</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+>>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248

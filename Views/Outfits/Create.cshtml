@@ -1,5 +1,6 @@
 ﻿@model Wardrobe.Models.Outfit
 
+<<<<<<< HEAD
 <h2>Yeni Kombin Ekle</h2>
 
 <form asp-action="Create" method="post" enctype="multipart/form-data">
@@ -15,6 +16,61 @@
         <input type="file" name="image" class="form-control" />
     </div>
     <button type="submit" class="btn btn-success mt-2">Kaydet</button>
+=======
+@{
+    ViewData["Title"] = "Yeni Kombin Ekle";
+}
+
+<h2 class="mb-4">Yeni Kombin Ekle</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <!-- Açıklama -->
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Açıklama</label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <!-- Bilgisayardan Dosya Yükleme -->
+    <div class="mb-3">
+        <label for="image" class="form-label">Resim Yükle (Bilgisayarından)</label>
+        <input type="file" name="image" id="image" class="form-control" accept=".jpg,.jpeg,.png,.gif,.bmp,.webp" />
+        <small class="form-text text-muted">JPG, PNG, WEBP, GIF, BMP dosya türleri desteklenir.</small>
+    </div>
+
+    <!-- URL'den Resim Ekleme -->
+    <div class="mb-3">
+        <label for="imageUrl" class="form-label">Görsel URL’si (isteğe bağlı)</label>
+        <input type="url" name="imageUrl" id="imageUrl" class="form-control" placeholder="https://example.com/image.jpg" />
+        <small class="form-text text-muted">Alternatif olarak bir internet bağlantısından görsel eklemek istersen buraya yapıştır.</small>
+    </div>
+
+    <!-- Tür -->
+    <div class="mb-3">
+        <label asp-for="Type" class="form-label">Tür</label>
+        <input asp-for="Type" class="form-control" placeholder="Örn: Tişört, Gömlek, Pantolon, Etek" />
+        <small class="form-text text-muted">Boş bırakırsan sistem açıklamaya göre otomatik tür belirlemeye çalışır.</small>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <!-- Renk -->
+    <div class="mb-3">
+        <label asp-for="Color" class="form-label">Renk</label>
+        <input asp-for="Color" class="form-control" placeholder="Örn: Kırmızı, Mavi, Siyah, Beyaz" />
+        <span asp-validation-for="Color" class="text-danger"></span>
+    </div>
+
+    <!-- Stil -->
+    <div class="mb-3">
+        <label asp-for="Style" class="form-label">Stil</label>
+        <input asp-for="Style" class="form-control" placeholder="Örn: Spor, Resmi, Günlük" />
+        <span asp-validation-for="Style" class="text-danger"></span>
+    </div>
+
+    <!-- Butonlar -->
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">İptal</a>
+>>>>>>> 1b9bee640ac8e0c8aff756158b1d76e51c38e248
 </form>
 
 @section Scripts {
