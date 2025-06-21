@@ -1,0 +1,61 @@
+﻿@model Wardrobe.Models.Outfit
+
+@{
+    ViewData["Title"] = "Kombini Düzenle";
+}
+
+<h2>Kombini Düzenle</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Açıklama</label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Mevcut Resim</label><br />
+        @if (!string.IsNullOrEmpty(Model.ImagePath))
+        {
+            <img src="@Model.ImagePath" alt="Kıyafet Resmi" style="max-width: 150px; max-height: 150px;" />
+        }
+        else
+        {
+            <span>Resim yok</span>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Yeni Resim Yükle (isteğe bağlı)</label>
+        <input type="file" name="image" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Type" class="form-label">Tür</label>
+        <input asp-for="Type" class="form-control" />
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Color" class="form-label">Renk</label>
+        <input asp-for="Color" class="form-control" />
+        <span asp-validation-for="Color" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Style" class="form-label">Stil</label>
+        <input asp-for="Style" class="form-control" />
+        <span asp-validation-for="Style" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">İptal</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

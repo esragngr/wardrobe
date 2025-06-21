@@ -1,0 +1,41 @@
+﻿@model List<(Wardrobe.Models.Outfit upper, Wardrobe.Models.Outfit lower, double score)>
+
+@{
+    ViewData["Title"] = "Rastgele Kombin";
+}
+
+<h2 class="mb-4">Sana Özel Rastgele Kombinler</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Şu an için önerilecek kombin bulunamadı.</div>
+}
+else
+{
+    <div class="row">
+        @foreach (var combo in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="row g-0">
+                        <div class="col-6">
+                            <div class="p-2 text-center">
+                                <img src="@combo.upper.ImagePath" class="img-fluid rounded" alt="Üst parça" style="height: 250px; object-fit: cover;" />
+                                <p class="mt-2"><strong>Üst:</strong><br />@combo.upper.Type - @combo.upper.Color - @combo.upper.Style</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-2 text-center">
+                                <img src="@combo.lower.ImagePath" class="img-fluid rounded" alt="Alt parça" style="height: 250px; object-fit: cover;" />
+                                <p class="mt-2"><strong>Alt:</strong><br />@combo.lower.Type - @combo.lower.Color - @combo.lower.Style</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted text-center">
+                        Uyum Skoru: <strong>@combo.score.ToString("0.00")</strong>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

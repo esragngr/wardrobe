@@ -1,0 +1,58 @@
+﻿@model List<(Wardrobe.Models.Outfit upper, Wardrobe.Models.Outfit lower, double score)>
+
+@{
+    ViewData["Title"] = "Kombin Önerileri";
+}
+
+<h2>Kombin Önerileri</h2>
+
+@if (!Model.Any())
+{
+    <p>Önerilecek kombin bulunamadı.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Üst Kıyafet</th>
+                <th>Alt Kıyafet</th>
+                <th>Benzerlik Skoru</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var combo in Model)
+            {
+                <tr>
+                    <td>
+                        <div>
+                            @if (!string.IsNullOrEmpty(combo.upper.ImagePath))
+                            {
+                                <img src="@combo.upper.ImagePath" alt="Üst Kıyafet" style="max-width: 100px; max-height: 100px;" />
+                            }
+                            <p><strong>Açıklama:</strong> @combo.upper.Description</p>
+                            <p><strong>Tür:</strong> @combo.upper.Type</p>
+                            <p><strong>Renk:</strong> @combo.upper.Color</p>
+                            <p><strong>Stil:</strong> @combo.upper.Style</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            @if (!string.IsNullOrEmpty(combo.lower.ImagePath))
+                            {
+                                <img src="@combo.lower.ImagePath" alt="Alt Kıyafet" style="max-width: 100px; max-height: 100px;" />
+                            }
+                            <p><strong>Açıklama:</strong> @combo.lower.Description</p>
+                            <p><strong>Tür:</strong> @combo.lower.Type</p>
+                            <p><strong>Renk:</strong> @combo.lower.Color</p>
+                            <p><strong>Stil:</strong> @combo.lower.Style</p>
+                        </div>
+                    </td>
+                    <td>@combo.score.ToString("F2")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="Index" class="btn btn-secondary">Geri Dön</a>

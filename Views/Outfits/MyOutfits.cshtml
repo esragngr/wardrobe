@@ -1,0 +1,93 @@
+﻿@model List<Wardrobe.Models.Outfit>
+
+@{
+    ViewData["Title"] = "Benim Kombinlerim";
+
+    var query = ViewContext.HttpContext.Request.Query;
+    var search = query["search"].ToString();
+    var type = query["type"].ToString();
+    var color = query["color"].ToString();
+    var style = query["style"].ToString();
+
+    var types = new List<string> { "Tişört", "Gömlek", "Pantolon", "Etek" };
+    var colors = new List<string> { "Kırmızı", "Mavi", "Siyah", "Beyaz" };
+    var styles = new List<string> { "Spor", "Resmi", "Günlük" };
+
+    string GetSelected(string current, string selected) => current == selected ? "selected" : "";
+}
+
+<h2 class="mb-4">Benim Kombinlerim</h2>
+
+<form method="get" class="mb-4">
+    <div class="row g-2">
+        <div class="col-md-3">
+            <input type="text" name="search" value="@search" placeholder="Açıklamada ara..." class="form-control" />
+        </div>
+
+        <div class="col-md-2">
+            <select name="type" class="form-select">
+                <option value="">Tüm Türler</option>
+                @foreach (var t in types)
+                {
+                    <option value="@t" selected="@(GetSelected(t, type))">@t</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <select name="color" class="form-select">
+                <option value="">Tüm Renkler</option>
+                @foreach (var c in colors)
+                {
+                    <option value="@c" selected="@(GetSelected(c, color))">@c</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <select name="style" class="form-select">
+                <option value="">Tüm Stiller</option>
+                @foreach (var s in styles)
+                {
+                    <option value="@s" selected="@(GetSelected(s, style))">@s</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Filtrele</button>
+        </div>
+    </div>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <div class="row">
+        @foreach (var outfit in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="@outfit.ImagePath" class="card-img-top" alt="Kombin resmi" style="height: 300px; object-fit: cover;" />
+                    <div class="card-body d-flex flex-column">
+                        <p class="card-text flex-grow-1">@outfit.Description</p>
+                        <p class="mb-2 text-muted small">
+                            <strong>Tür:</strong> @outfit.Type |
+                            <strong>Renk:</strong> @outfit.Color |
+                            <strong>Stil:</strong> @outfit.Style
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <a asp-controller="Outfits" asp-action="Edit" asp-route-id="@outfit.Id" class="btn btn-sm btn-outline-warning">Düzenle</a>
+                            <form asp-controller="Outfits" asp-action="Delete" asp-route-id="@outfit.Id" method="post" class="d-inline" onsubmit="return confirm('Silmek istediğinize emin misiniz?');">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Sil</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="alert alert-info">Hiç kombin bulunamadı. Yeni kombin ekleyerek başlayabilirsin.</div>
+}
